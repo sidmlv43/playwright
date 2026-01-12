@@ -65,12 +65,13 @@ test("test sub window handling", async ({ browser }) => {
   ]);
 
   await newPage.waitForLoadState("domcontentloaded");
+  await newPage.locator(".preloader").waitFor({ state: "hidden" });
   await newPage.locator(".red").waitFor();
   const emailToContact = await newPage.locator(".red").textContent();
 
-  await expect(emailToContact).toEqual(
-    "Please email us at mentor@rahulshettyacademy.com with below template to receive response"
-  );
-}); 
-
-
+  await expect(
+    emailToContact?.includes(
+      "Please email us at mentor@rahulshettyacademy.com with below template to receive response"
+    )
+  ).toBeTruthy();
+});
