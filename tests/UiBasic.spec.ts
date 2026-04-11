@@ -61,7 +61,12 @@ test("test sub window handling", async ({ browser }) => {
 
   const [newPage] = await Promise.all([
     page.waitForEvent("popup"),
-    page.locator(".blinkingText").click(),
+    page.locator(
+      ".blinkingText", 
+      {
+        hasText: "Free Access to InterviewQues/ResumeAssistance/Material"
+      }
+    ).click(),
   ]);
 
   await newPage.waitForLoadState("domcontentloaded");
