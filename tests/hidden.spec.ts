@@ -19,4 +19,13 @@ test("Popup Validations", async ({ page }) => {
   page.on("dialog", (dialog) => dialog.accept());
 
   await page.locator("#mousehover").hover();
+
+  const iframePage = page.frameLocator("#courses-iframe");
+
+  await iframePage
+    .getByRole("link")
+    .filter({
+      hasText: "Learning Paths",
+    })
+    .click();
 });
