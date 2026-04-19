@@ -8,7 +8,7 @@ test("test cart is empty", async ({ page }) => {
   await greenKartHomePage.verifyCartModalIsEmpty();
 });
 
-test.only("add product to cart", async ({ page }) => {
+test("add product to cart", async ({ page }) => {
   const greenKartHomePage = new GreenCartHomePage(page);
   await greenKartHomePage.goto();
   await greenKartHomePage.addProductsToCart(
@@ -27,3 +27,13 @@ test.only("add product to cart", async ({ page }) => {
   );
   await page.pause();
 });
+
+
+
+test.only("Search Function is working", async ({page}) => {
+  const greenKartPage = new GreenCartHomePage(page);
+  await greenKartPage.goto()
+  await greenKartPage.searchProduct("Tomato");
+  await greenKartPage.verifySearchResult("Tomato");
+
+})

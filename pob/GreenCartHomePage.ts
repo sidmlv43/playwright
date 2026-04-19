@@ -94,4 +94,16 @@ export class GreenCartHomePage {
       expect(cartItem.isVisible()).toBeTruthy();
     }
   }
+
+  async verifySearchResult(prod: string) {
+    const prodList = await this.productList.locator(".prod").allTextContents();
+    console.log(prodList);
+
+    expect(prodList.length).toBeGreaterThanOrEqual(1);
+
+    const allProdListContainsProd = prodList.every((item) =>
+      item.includes(prod),
+    );
+    expect(allProdListContainsProd).toBeTruthy();
+  }
 }
