@@ -1,6 +1,5 @@
 import { test, expect } from "@playwright/test";
 
-
 test("Test Login with correct username and correct password", async ({
   page,
 }) => {
@@ -12,7 +11,7 @@ test("Test Login with correct username and correct password", async ({
   const signInBtn = page.getByRole("button");
   await usernameField.fill("rahulshettyacademy");
   await passwordInputField.fill("learning");
-  await page.getByLabel("terms and conditions").check()
+  await page.getByLabel("terms and conditions").check();
   await signInBtn.click();
   await page.waitForLoadState("networkidle");
 

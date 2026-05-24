@@ -96,14 +96,23 @@ export class GreenCartHomePage {
   }
 
   async verifySearchResult(prod: string) {
-    const prodList = await this.productList.locator(".prod").allTextContents();
-    console.log(prodList);
-
-    expect(prodList.length).toBeGreaterThanOrEqual(1);
-
-    const allProdListContainsProd = prodList.every((item) =>
-      item.includes(prod),
+    const productTitles = await this.page.locator(".product").allTextContents();
+    expect(
+      productTitles.length == 1,
+      "Expected search result to be exact 1 but got " +
+        productTitles.length +
+        " results instead",
     );
-    expect(allProdListContainsProd).toBeTruthy();
+
+    expect(productTitles[0].includes(prod));
   }
 }
+
+/**
+ * 
+ *                 ((JavascriptExecutor) driver).executeScript(
+                        "arguments[0].scrollIntoView({block:'center', inline:'center'});",
+                        element
+                );
+
+ */

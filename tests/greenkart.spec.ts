@@ -25,12 +25,12 @@ test("add product to cart", async ({ page }) => {
     "Carrot",
     "Mushroom",
   );
-  await page.pause();
+ 
 });
 
 
 
-test.only("Search Function is working", async ({page}) => {
+test("Search Function is working", async ({page}) => {
   const greenKartPage = new GreenCartHomePage(page);
   await greenKartPage.goto()
   await greenKartPage.searchProduct("Tomato");
